@@ -1,0 +1,123 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+input CreateHeroInput {
+  name: String!
+  date: String!
+  clientMutationId: String
+}
+
+type CreateHeroPayload {
+  hero: Hero
+  clientMutationId: String
+}
+
+"""Hero type"""
+type Hero implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """Hero Name"""
+  name: String
+
+  """Hero date of birth"""
+  date: String
+}
+
+"""A connection to a list of items."""
+type HeroConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [HeroEdge]
+}
+
+"""An edge in a connection."""
+type HeroEdge {
+  """The item at the end of the edge"""
+  node: Hero
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""Mutations"""
+type Mutation {
+  createHero(input: CreateHeroInput!): CreateHeroPayload
+  updateHero(input: UpdateHeroInput!): UpdateHeroPayload
+  removeHero(input: RemoveHeroInput!): RemoveHeroPayload
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""Query interface for our app"""
+type Query {
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Fetches objects given their IDs"""
+  nodes(
+    """The IDs of objects"""
+    ids: [ID!]!
+  ): [Node]!
+
+  """Query for docs"""
+  root: Root!
+}
+
+input RemoveHeroInput {
+  id: String!
+  clientMutationId: String
+}
+
+type RemoveHeroPayload {
+  deletedId: String
+  deleted: Boolean
+  clientMutationId: String
+}
+
+type Root {
+  Hero(id: ID): Hero
+  Heroes(after: String, first: Int, before: String, last: Int): HeroConnection!
+  id: ID!
+}
+
+input UpdateHeroInput {
+  id: String!
+  name: String
+  date: String
+  clientMutationId: String
+}
+
+type UpdateHeroPayload {
+  updatedId: String
+  updated: Boolean
+  clientMutationId: String
+}
+

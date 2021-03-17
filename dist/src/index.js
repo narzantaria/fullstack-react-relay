@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'antd/dist/antd.css';
+import './main.scss';
 import App from './App';
+import { Spin } from 'antd';
 import reportWebVitals from './reportWebVitals';
+
+import { RelayEnvironmentProvider } from 'react-relay';
+import Environment from './Environment';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<Spin />}>
+      <RelayEnvironmentProvider environment={Environment}>
+        <App />
+      </RelayEnvironmentProvider>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,0 +1,81 @@
+$darkClr: #12130d !important;
+$lightClr: #eae3c8 !important;
+$hh: 55px !important;
+$hoverColor: aqua;
+$gold: #da723c;
+
+// font-family: 'Source Sans Pro', sans-serif;
+// font-family: 'Merriweather', serif;
+// font-family: 'Noto Sans', sans-serif;
+// font-family: 'Lora', serif;
+// font-family: 'PT Serif', serif;
+// font-family: 'Arimo', sans-serif;
+// font-family: 'Play', sans-serif;
+// font-family: 'Ubuntu', sans-serif;
+// font-family: 'Ubuntu Condensed', sans-serif;
+// font-family: 'Alegreya Sans', sans-serif;
+// font-family: 'Tinos', serif;
+// font-family: 'PT Mono', monospace;
+// font-family: 'Jura', sans-serif;
+// font-family: 'Cousine', monospace;
+// font-family: 'Anonymous Pro', monospace;
+// font-family: 'Spectral', serif;
+// font-family: 'Arsenal', sans-serif;
+// font-family: 'Exo 2', sans-serif;
+// font-family: 'Fira Sans', sans-serif;
+// font-family: 'M PLUS 1p', sans-serif; 
+// font-family: 'Scada', sans-serif;
+// font-family: 'Inter', sans-serif; 
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Montserrat', sans-serif; 
+// font-family: 'PT Sans', sans-serif; 
+// font-family: 'IBM Plex Sans', sans-serif;
+// font-family: 'Comfortaa', cursive; 
+// font-family: 'Fira Code', monospace;
+// font-family: 'Andika', sans-serif;
+// font-family: 'Ubuntu Mono', monospace;
+// font-family: 'Manrope', sans-serif;
+// font-family: 'Fira Mono', monospace;
+// font-family: 'Forum', cursive;
+
+body {
+  font-family: 'Arsenal', sans-serif;
+}
+header, button, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Anonymous Pro', monospace; 
+}
+
+header {
+  * {transition: .3s;}
+  padding: 0 !important;
+  height: $hh;
+  background-color: $darkClr;
+  line-height: $hh;
+  .anticon, a {color: $lightClr;}
+  .anticon {
+    font-size: 1.65em !important;
+    margin: 15px 8px 0 0;
+  }
+  a:hover * {color: $hoverColor;}
+}
+
+#Top_Nav {
+  margin-top: -1px !important;
+  height: $hh;
+  background-color: $darkClr;
+  border-bottom: unset;
+  & > li {border-bottom: unset;}
+  .ant-menu-item a {
+    display: flex;
+  }
+  .ant-menu-item {margin: 0 12px;}
+}
+
+#Main {padding: 20px 0;}
+
+.Add_Btn {margin-bottom: 10px;}
+
+.gold {
+  border-top: 1px solid $gold;
+  margin: 10px 0 15px 0;
+}
