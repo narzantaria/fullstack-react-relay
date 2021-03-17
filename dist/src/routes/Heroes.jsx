@@ -7,7 +7,7 @@ import AddHero from '../components/AddHero';
 
 
 
-function Heroes() {
+function Heroes(props) {
   const data = usePreloadedQuery(
     graphql`
       query HeroesQuery {

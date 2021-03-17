@@ -12,6 +12,7 @@ function HeroTpl({ hero }) {
       <Col span={2}>
         <DeleteOutlined
           onClick={_ => RemoveHeroMutation(hero.id)}
+          style={{ float: "right" }}
         />
       </Col>
     </Row>
@@ -20,12 +21,12 @@ function HeroTpl({ hero }) {
 
 export default createFragmentContainer(
   HeroTpl, {
-    hero: graphql`
+  hero: graphql`
       fragment HeroTpl_hero on Hero {
         id
         name
         date
       }
     `
-  }
+}
 );
