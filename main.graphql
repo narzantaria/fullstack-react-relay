@@ -1,72 +1,72 @@
-mutation CreateHeroMutation($input: CreateHeroInput!) {
-  createHero(input: $input) {
-     hero {
-      id
-      name
-      date
-    }
-  }
-}
+# mutation CreateHeroMutation($input: CreateHeroInput!) {
+#   createHero(input: $input) {
+#      hero {
+#       id
+#       name
+#       date
+#     }
+#   }
+# }
 
-{
-  "input": {
-    "name": "lkjlkjhlkjhlkj",
-    "date": "2019-10-04T21:00:00.000Z"
-  }
-}
+# {
+#   "input": {
+#     "name": "lkjlkjhlkjhlkj",
+#     "date": "2019-10-04T21:00:00.000Z"
+#   }
+# }
 
-query HeroesQuery {
-  root {
-    Heroes {
-      edges {
-        node {
-          id
-          name
-          date
-        }
-      }
-    }
-  }
-}
+# query HeroesQuery {
+#   root {
+#     Heroes {
+#       edges {
+#         node {
+#           id
+#           name
+#           date
+#         }
+#       }
+#     }
+#   }
+# }
 
-query HeroQuery($id: ID!) {
-  root {
-    Hero(id: $id) {
-      id
-      name
-      date
-    }
-  }
-}
+# query HeroQuery($id: ID!) {
+#   root {
+#     Hero(id: $id) {
+#       id
+#       name
+#       date
+#     }
+#   }
+# }
 
-{
-  "id": "SGVybzoy"
-}
+# {
+#   "id": "SGVybzoy"
+# }
 
-mutation UpdateHeroMutation($input: UpdateHeroInput!) {
-  updateHero(input: $input) {
-    updatedId
-    updated
-  }
-}
+# mutation UpdateHeroMutation($input: UpdateHeroInput!) {
+#   updateHero(input: $input) {
+#     updatedId
+#     updated
+#   }
+# }
 
-{
-  "input": {
-    "id": "SGVybzo0ZmQxN2U5MS1hYzY4LTQxYjQtYWFmNy1jM2QyMmVkNDg1Mjk=",
-    "name": "vcbxvcxbvcxbvcxbvcxbvcxbv 333",
-    "date": "2019-10-04T21:00:00.000Z"
-  }
-}
+# {
+#   "input": {
+#     "id": "SGVybzo0ZmQxN2U5MS1hYzY4LTQxYjQtYWFmNy1jM2QyMmVkNDg1Mjk=",
+#     "name": "vcbxvcxbvcxbvcxbvcxbvcxbv 333",
+#     "date": "2019-10-04T21:00:00.000Z"
+#   }
+# }
 
-mutation RemoveHeroMutation($input: RemoveHeroInput!) {
-  removeHero(input: $input) {
-    deleted
-    deletedId
-  }
-}
+# mutation RemoveHeroMutation($input: RemoveHeroInput!) {
+#   removeHero(input: $input) {
+#     deleted
+#     deletedId
+#   }
+# }
 
-{
-  "input": {
-    "id": "SGVybzoy"
-  }
-}
+# {
+#   "input": {
+#     "id": "SGVybzoy"
+#   }
+# }
