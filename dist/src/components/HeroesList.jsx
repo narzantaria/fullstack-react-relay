@@ -6,6 +6,7 @@ import HeroTpl from './HeroTpl';
 import { createFragmentContainer, createPaginationContainer, graphql } from 'react-relay';
 
 function HeroesList({ root }) {
+  // console.log(root);
   return (
     <Fragment>
       {root.Heroes.edges.map(edge => (

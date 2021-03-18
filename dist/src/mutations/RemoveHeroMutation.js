@@ -11,8 +11,6 @@ const mutation = graphql`
   }
 `;
 
-let tempID = 0;
-
 function RemoveHeroMutation(id) {
   commitMutation(
     environment,
@@ -24,20 +22,7 @@ function RemoveHeroMutation(id) {
         }
       },
       updater: (store) => {
-        const root = store
-          .getRoot()
-          .getLinkedRecord("Root");
-        const conn = ConnectionHandler.getConnection(
-          root,
-          'HeroesList_Heroes',
-        );
-        console.log(conn);
-
-        // console.log(store.getRoot());
-        // const payload = store.getRootField('createHero');
-        // const newEdge = payload.getLinkedRecord('hero');
-
-        // ConnectionHandler.insertEdgeAfter(conn, newEdge);
+        //
       },
       onCompleted: (response, errors) => {
         console.log('Response received from server.');

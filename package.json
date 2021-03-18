@@ -6,7 +6,8 @@
   "author": "Nar Zantaria <narzantaria@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index",
+    "start": "nodemon index & (cd dist && npm run dev)"
   },
   "dependencies": {
     "config": "^3.3.6",
