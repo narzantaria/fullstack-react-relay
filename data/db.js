@@ -4,17 +4,17 @@ const { fromGlobalId } = require('graphql-relay');
 let data = {
   heroes: [
     {
-      id: 0,
+      id: uuidv4(),
       name: 'Sandro',
       date: '2020-02-24T21:00:00.000Z'
     },
     {
-      id: 1,
+      id: uuidv4(),
       name: 'Finneas',
       date: '2020-02-24T21:00:00.000Z'
     },
     {
-      id: 2,
+      id: uuidv4(),
       name: 'Fargo',
       date: '2020-02-24T21:00:00.000Z'
     },

@@ -14,15 +14,6 @@ const mutation = graphql`
   }
 `;
 
-function sharedUpdater(store, rootId, newEdge) {
-  const root = store.get(rootId);
-  const conn = ConnectionHandler.getConnection(
-    root,
-    'HeroesList_Heroes'
-  );
-  ConnectionHandler.insertEdgeAfter(conn, newEdge, null);
-}
-
 function CreateHeroMutation(rootId, name, date) {
   commitMutation(
     environment,
@@ -35,8 +26,20 @@ function CreateHeroMutation(rootId, name, date) {
         }
       },
       updater: (store) => {
-        const newHero = store.getRootField("createHero").getLinkedRecord("hero");
-        sharedUpdater(store, rootId, newHero);
+        const connectionRecord = ConnectionHandler.getConnection(
+          store.get(rootId),
+          'HeroesList_Heroes',
+        );
+        const node = store.getRootField("createHero").getLinkedRecord("hero");
+        const newEdge = ConnectionHandler.buildConnectionEdge(
+          store,
+          connectionRecord,
+          node,
+        );
+        ConnectionHandler.insertEdgeAfter(
+          connectionRecord,
+          newEdge,
+        );
       },
       optimisticUpdater: (store) => {
         //

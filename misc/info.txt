@@ -12,3 +12,7 @@ yarn eject
 yarn add @ant-design/icons antd node-sass@4.14.1 react-relay react-router-dom relay-runtime uuid
 yarn add -D babel-plugin-relay graphql npm-run-all relay-compiler relay-config
 get-graphql-schema http://localhost:5000/graphql > schema.graphql
+
+...................................................................................
+
+Hello! I can't work with Relay store when creating and deleting records via the updater function. The mutations themselves work, but the UI is not updated. I have done so much already, and only this topic does not work out in any way. I don't know what to do anymore. If someone help me figure it out, I will be very grateful. The project is in the repository. This application is a full stack, all processes (server, compiler, react) are started by one command (npm run start), there is a "fake" server in which we can create and delete records. Only updater/optimisticUpdater does not work. Here is the link: Thanks everyone!
