@@ -11,11 +11,11 @@ import Environment from './Environment';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<Spin />}>
-      <RelayEnvironmentProvider environment={Environment}>
+    <RelayEnvironmentProvider environment={Environment}>
+      <Suspense fallback={<Spin />}>
         <App />
-      </RelayEnvironmentProvider>
-    </Suspense>
+      </Suspense>
+    </RelayEnvironmentProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

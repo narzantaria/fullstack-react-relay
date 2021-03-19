@@ -4,7 +4,7 @@ import { PlusOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import HeroForm from './HeroForm';
 import CreateHeroMutation from '../mutations/CreateHeroMutation';
 
-function AddHero({ viewer }) {
+function AddHero() {
   const [visible, setVisible] = useState(false);
   return (
     <Fragment>

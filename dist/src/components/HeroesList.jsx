@@ -2,23 +2,16 @@ import React, { Fragment } from 'react';
 import { Button } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import HeroTpl from './HeroTpl';
+import { v4 as uuidv4 } from 'uuid';
 
-import { createFragmentContainer, createPaginationContainer, graphql } from 'react-relay';
+import { graphql } from 'react-relay';
+import { useFragment } from 'react-relay/hooks';
+import AddHero from './AddHero';
 
 function HeroesList({ root }) {
-  // console.log(root);
-  return (
-    <Fragment>
-      {root.Heroes.edges.map(edge => (
-        <HeroTpl hero={edge.node} key={edge.node.id} />
-      ))}
-    </Fragment>
-  )
-}
-
-export default createFragmentContainer(
-  HeroesList, {
-  root: graphql`
+  console.log(root);
+  const data = useFragment(
+    graphql`
       fragment HeroesList_root on Root {
         Heroes (first: 100)
         @connection(key: "HeroesList_Heroes", filters: []) 
@@ -32,5 +25,16 @@ export default createFragmentContainer(
         }        
       }
     `,
+    root
+  );
+  return (
+    <Fragment>
+      <AddHero />
+      {data.Heroes.edges.map(edge => (
+        <HeroTpl hero={edge.node} key={uuidv4()} />
+      ))}
+    </Fragment>
+  )
 }
-);
+
+export default HeroesList;

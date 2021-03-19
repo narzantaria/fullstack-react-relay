@@ -1,6 +1,8 @@
 import { commitMutation, graphql } from 'react-relay';
 import environment from '../Environment';
+import { useFragment } from 'react-relay/hooks';
 import { ConnectionHandler } from 'relay-runtime';
+import { v4 as uuidv4 } from 'uuid';
 
 const mutation = graphql`
   mutation CreateHeroMutation($input: CreateHeroInput!) {
@@ -26,20 +28,7 @@ function CreateHeroMutation(rootId, name, date) {
         }
       },
       updater: (store) => {
-        const connectionRecord = ConnectionHandler.getConnection(
-          store.get(rootId),
-          'HeroesList_Heroes',
-        );
-        const node = store.getRootField("createHero").getLinkedRecord("hero");
-        const newEdge = ConnectionHandler.buildConnectionEdge(
-          store,
-          connectionRecord,
-          node,
-        );
-        ConnectionHandler.insertEdgeAfter(
-          connectionRecord,
-          newEdge,
-        );
+        //
       },
       optimisticUpdater: (store) => {
         //
