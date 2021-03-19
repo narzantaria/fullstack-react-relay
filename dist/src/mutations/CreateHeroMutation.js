@@ -28,10 +28,41 @@ function CreateHeroMutation(rootId, name, date) {
         }
       },
       updater: (store) => {
-        //
+        const heroProxy = store.getRootField("createHero").getLinkedRecord("hero");
+        const rootProxy = store.get(rootId);
+        const rootConnection = ConnectionHandler.getConnection(
+          rootProxy,
+          'HeroesList_Heroes',
+        );
+        const newEdge = store.create(
+          uuidv4(),
+          'HeroEdge',
+        );
+        newEdge.setLinkedRecord(heroProxy, 'node');
+        // console.log(heroProxy._dataID);
+        // console.log(rootConnection._dataID);
+        console.log(newEdge);
+        ConnectionHandler.insertEdgeAfter(rootConnection, newEdge);
       },
       optimisticUpdater: (store) => {
-        //
+        const id = uuidv4();
+        const id2 = uuidv4();
+        const newHero = store.create(id, "Hero");
+        newHero.setValue(name, 'name');
+        newHero.setValue(date, 'date');
+        newHero.setValue(id, 'id');
+        const newEdge = store.create(
+          id2,
+          'HeroEdge',
+        );
+        newEdge.setLinkedRecord(newHero, 'node');
+        const rootProxy = store.get(rootId);
+        const rootConnection = ConnectionHandler.getConnection(
+          rootProxy,
+          'HeroesList_Heroes',
+        );
+        ConnectionHandler.insertEdgeAfter(rootConnection, newEdge);
+        // console.log(rootConnection);
       },
       onCompleted: (response, errors) => {
         console.log('Response received from server.');

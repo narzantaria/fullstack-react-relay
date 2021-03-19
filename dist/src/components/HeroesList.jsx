@@ -14,7 +14,7 @@ function HeroesList({ root }) {
     graphql`
       fragment HeroesList_root on Root {
         Heroes (first: 100)
-        @connection(key: "HeroesList_Heroes", filters: []) 
+        @connection(key: "HeroesList_root", filters: []) 
         {
           edges {
             node {
