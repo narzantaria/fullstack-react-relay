@@ -39,9 +39,6 @@ function CreateHeroMutation(rootId, name, date) {
           'HeroEdge',
         );
         newEdge.setLinkedRecord(heroProxy, 'node');
-        // console.log(heroProxy._dataID);
-        // console.log(rootConnection._dataID);
-        console.log(newEdge);
         ConnectionHandler.insertEdgeAfter(rootConnection, newEdge);
       },
       optimisticUpdater: (store) => {
@@ -62,7 +59,6 @@ function CreateHeroMutation(rootId, name, date) {
           'HeroesList_Heroes',
         );
         ConnectionHandler.insertEdgeAfter(rootConnection, newEdge);
-        // console.log(rootConnection);
       },
       onCompleted: (response, errors) => {
         console.log('Response received from server.');

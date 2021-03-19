@@ -22,7 +22,21 @@ function RemoveHeroMutation(id) {
         }
       },
       updater: (store) => {
-        //
+        const removedHero = store.getRootField("removeHero").getValue("deletedId");
+        const rootProxy = store.get("rootId");
+        const rootConnection = ConnectionHandler.getConnection(
+          rootProxy,
+          'HeroesList_Heroes',
+        );
+        ConnectionHandler.deleteNode(rootConnection,removedHero);
+      },
+      optimisticUpdater: (store) => {
+        const rootProxy = store.get("rootId");
+        const rootConnection = ConnectionHandler.getConnection(
+          rootProxy,
+          'HeroesList_Heroes',
+        );
+        ConnectionHandler.deleteNode(rootConnection,id);
       },
       onCompleted: (response, errors) => {
         console.log('Response received from server.');

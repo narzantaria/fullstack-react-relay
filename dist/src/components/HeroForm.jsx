@@ -10,11 +10,14 @@ function HeroForm({ data, sendbackData }) {
       layout="vertical"
       initialValues={{
         ...data,
-        // date: data ? moment(new Date(data.date), dateFormat) : ''
-        date: moment(new Date())
+        date: data ? moment(new Date(data.date), dateFormat) : ''
+        // date: moment(new Date())
       }}
       onFinish={values => {
-        sendbackData(values.name, new Date(values.date).toISOString())
+        sendbackData({
+          name: values.name, 
+          date: new Date(values.date).toISOString()
+        })
       }}
     >
       <Row gutter={16}>

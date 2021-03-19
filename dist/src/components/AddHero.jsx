@@ -24,7 +24,7 @@ function AddHero() {
         visible={visible}
       >
         <HeroForm
-          sendbackData={(name, date) => {
+          sendbackData={({ name, date }) => {
             CreateHeroMutation("rootId", name, date);
             setVisible(false);
           }}
