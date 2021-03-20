@@ -10,10 +10,12 @@ const PORT = config.get('PORT') || 5000;
 
 const Query = require('./graphql/query');
 const Mutation = require('./graphql/mutation');
+const Subscription = require('./graphql/subscription');
 
 const schema = new GraphQLSchema({
   query: Query,
-  mutation: Mutation
+  mutation: Mutation,
+  subscription: Subscription
 });
 
 const app = express();

@@ -62,5 +62,10 @@ module.exports = {
         deleted: true
       });
     });
+  },
+  getHeroesNumber: () => {
+    return new Promise((resolve)=>{
+      resolve(heroes.length);
+    });
   }
 };

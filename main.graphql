@@ -70,3 +70,9 @@
 #     "id": "SGVybzoy"
 #   }
 # }
+
+# subscription {
+#   HeroesNumber {
+#     number
+#   }
+# }
