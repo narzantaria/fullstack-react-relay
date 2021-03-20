@@ -20,11 +20,6 @@ const paginationQuery = graphql`
 `;
 
 function HeroesList({ viewer }) {
-  useEffect(() => {    
-    return () => {
-      console.log("Effect");
-    }
-  }, [])
   /**
   * const data = useFragment(
   *   graphql`
