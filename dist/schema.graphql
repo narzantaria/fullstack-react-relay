@@ -73,6 +73,12 @@ type PageInfo {
   endCursor: String
 }
 
+"""Population type"""
+type Population {
+  """Population nimber"""
+  number: Int
+}
+
 """Query interface for our app"""
 type Query {
   """Fetches an object given its ID"""
@@ -100,6 +106,10 @@ type RemoveHeroPayload {
   deletedId: String
   deleted: Boolean
   clientMutationId: String
+}
+
+type Subscription {
+  HeroesNumber: Population
 }
 
 input UpdateHeroInput {
