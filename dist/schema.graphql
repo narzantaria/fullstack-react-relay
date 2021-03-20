@@ -88,7 +88,7 @@ type Query {
   ): [Node]!
 
   """Query for docs"""
-  root: Root!
+  viewer: Viewer!
 }
 
 input RemoveHeroInput {
@@ -102,12 +102,6 @@ type RemoveHeroPayload {
   clientMutationId: String
 }
 
-type Root {
-  Hero(id: ID): Hero
-  Heroes(after: String, first: Int, before: String, last: Int): HeroConnection!
-  id: ID!
-}
-
 input UpdateHeroInput {
   id: String!
   name: String
@@ -119,5 +113,11 @@ type UpdateHeroPayload {
   updatedId: String
   updated: Boolean
   clientMutationId: String
+}
+
+type Viewer {
+  Hero(id: ID): Hero
+  Heroes(after: String, first: Int, before: String, last: Int): HeroConnection!
+  id: ID!
 }
 

@@ -18,8 +18,8 @@ const { Hero, HeroConnection } = require('./types/hero');
 
 const { getHero, getHeroes } = require('../data/db');
 
-const Root = new GraphQLObjectType({
-  name: "Root",
+const Viewer = new GraphQLObjectType({
+  name: "Viewer",
   fields: {
     Hero: {
       type: Hero,
@@ -60,10 +60,10 @@ const Query = new GraphQLObjectType({
   fields: {
     node: nodeField,
     nodes: nodesField,
-    root: {
-      name: "Root",
+    viewer: {
+      name: "Viewer",
       description: "Query for docs",
-      type: new GraphQLNonNull(Root),
+      type: new GraphQLNonNull(Viewer),
       resolve: (_, args) => {
         return {};
       }

@@ -10,7 +10,7 @@ import UpdateHeroMutation from '../mutations/UpdateHeroMutation';
 /** 
 * const HeroQuery = graphql`
 *   query HeroQuery($id: ID!) {
-*     root {
+*     viewer {
 *       Hero(id: $id) {
 *         id
 *         name
@@ -23,7 +23,7 @@ import UpdateHeroMutation from '../mutations/UpdateHeroMutation';
 
 const HeroQuery = graphql`
   query HeroQuery($id: ID!) {
-    root {
+    viewer {
       Hero(id: $id) {
         id
         name
@@ -52,7 +52,7 @@ function Hero(props) {
       <hr className="gold" />
       <HeroForm
         id={props.match.params.id}
-        data={data.root.Hero}
+        data={data.viewer.Hero}
         sendbackData={({ name, date }) => {
           // console.log(args);
           UpdateHeroMutation(props.match.params.id, name, date);

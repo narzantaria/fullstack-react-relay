@@ -12,7 +12,7 @@ export type HeroQueryVariables = {|
   id: string
 |};
 export type HeroQueryResponse = {|
-  +root: {|
+  +viewer: {|
     +Hero: ?{|
       +id: string,
       +name: ?string,
@@ -31,7 +31,7 @@ export type HeroQuery = {|
 query HeroQuery(
   $id: ID!
 ) {
-  root {
+  viewer {
     Hero(id: $id) {
       id
       name
@@ -99,9 +99,9 @@ return {
       {
         "alias": null,
         "args": null,
-        "concreteType": "Root",
+        "concreteType": "Viewer",
         "kind": "LinkedField",
-        "name": "root",
+        "name": "viewer",
         "plural": false,
         "selections": [
           (v2/*: any*/)
@@ -121,9 +121,9 @@ return {
       {
         "alias": null,
         "args": null,
-        "concreteType": "Root",
+        "concreteType": "Viewer",
         "kind": "LinkedField",
-        "name": "root",
+        "name": "viewer",
         "plural": false,
         "selections": [
           (v2/*: any*/),
@@ -134,16 +134,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "df5261c64cea3d975ecb5f1b10f0c562",
+    "cacheID": "bf068a0a9db71a6be55c6bcb9f89fbd5",
     "id": null,
     "metadata": {},
     "name": "HeroQuery",
     "operationKind": "query",
-    "text": "query HeroQuery(\n  $id: ID!\n) {\n  root {\n    Hero(id: $id) {\n      id\n      name\n      date\n    }\n    id\n  }\n}\n"
+    "text": "query HeroQuery(\n  $id: ID!\n) {\n  viewer {\n    Hero(id: $id) {\n      id\n      name\n      date\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'f59ef91981cd09fa3a7c46f31686ab99';
+(node/*: any*/).hash = 'aeea087fe640d43ffc729a9171ca1fcc';
 
 module.exports = node;

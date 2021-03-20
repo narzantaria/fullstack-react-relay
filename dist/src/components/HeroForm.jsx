@@ -4,10 +4,12 @@ import moment from 'moment';
 
 const dateFormat = 'DD/MM/YYYY';
 
-function HeroForm({ data, sendbackData }) {
+function HeroForm({ data, reset, sendbackData }) {
+  const [form] = Form.useForm();
   return (
     <Form
       layout="vertical"
+      form={form}
       initialValues={{
         ...data,
         date: data ? moment(new Date(data.date), dateFormat) : ''
@@ -17,7 +19,8 @@ function HeroForm({ data, sendbackData }) {
         sendbackData({
           name: values.name, 
           date: new Date(values.date).toISOString()
-        })
+        });
+        reset && form.resetFields();
       }}
     >
       <Row gutter={16}>

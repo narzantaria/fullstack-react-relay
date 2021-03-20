@@ -28,6 +28,7 @@ function AddHero() {
             CreateHeroMutation("rootId", name, date);
             setVisible(false);
           }}
+          reset="reset"
         />
       </Drawer>
     </Fragment>

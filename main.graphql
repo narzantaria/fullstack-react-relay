@@ -16,7 +16,7 @@
 # }
 
 # query HeroesQuery {
-#   root {
+#   viewer {
 #     Heroes {
 #       edges {
 #         node {
@@ -30,7 +30,7 @@
 # }
 
 # query HeroQuery($id: ID!) {
-#   root {
+#   viewer {
 #     Hero(id: $id) {
 #       id
 #       name

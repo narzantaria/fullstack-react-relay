@@ -10,9 +10,9 @@
 import type { ReaderFragment } from 'relay-runtime';
 type HeroTpl_hero$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type HeroesList_root$ref: FragmentReference;
-declare export opaque type HeroesList_root$fragmentType: HeroesList_root$ref;
-export type HeroesList_root = {|
+declare export opaque type HeroesList_viewer$ref: FragmentReference;
+declare export opaque type HeroesList_viewer$fragmentType: HeroesList_viewer$ref;
+export type HeroesList_viewer = {|
   +Heroes: {|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
@@ -21,33 +21,60 @@ export type HeroesList_root = {|
       |}
     |}>
   |},
-  +$refType: HeroesList_root$ref,
+  +$refType: HeroesList_viewer$ref,
 |};
-export type HeroesList_root$data = HeroesList_root;
-export type HeroesList_root$key = {
-  +$data?: HeroesList_root$data,
-  +$fragmentRefs: HeroesList_root$ref,
+export type HeroesList_viewer$data = HeroesList_viewer;
+export type HeroesList_viewer$key = {
+  +$data?: HeroesList_viewer$data,
+  +$fragmentRefs: HeroesList_viewer$ref,
   ...
 };
 */
 
 
-const node/*: ReaderFragment*/ = {
-  "argumentDefinitions": [],
+const node/*: ReaderFragment*/ = (function(){
+var v0 = [
+  "Heroes"
+];
+return {
+  "argumentDefinitions": [
+    {
+      "defaultValue": 5,
+      "kind": "LocalArgument",
+      "name": "count"
+    },
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "cursor"
+    }
+  ],
   "kind": "Fragment",
   "metadata": {
     "connection": [
       {
-        "count": null,
-        "cursor": null,
+        "count": "count",
+        "cursor": "cursor",
         "direction": "forward",
-        "path": [
-          "Heroes"
-        ]
+        "path": (v0/*: any*/)
       }
-    ]
+    ],
+    "refetch": {
+      "connection": {
+        "forward": {
+          "count": "count",
+          "cursor": "cursor"
+        },
+        "backward": null,
+        "path": (v0/*: any*/)
+      },
+      "fragmentPathInResult": [
+        "viewer"
+      ],
+      "operation": require('./paginationQuery.graphql.js')
+    }
   },
-  "name": "HeroesList_root",
+  "name": "HeroesList_viewer",
   "selections": [
     {
       "alias": "Heroes",
@@ -134,10 +161,11 @@ const node/*: ReaderFragment*/ = {
       "storageKey": null
     }
   ],
-  "type": "Root",
+  "type": "Viewer",
   "abstractKey": null
 };
+})();
 // prettier-ignore
-(node/*: any*/).hash = '596183116567e4e5cb13eb9ae10b8059';
+(node/*: any*/).hash = '61ef01a9b5e3c40780c5dfa007357464';
 
 module.exports = node;

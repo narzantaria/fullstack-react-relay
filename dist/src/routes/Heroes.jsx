@@ -22,8 +22,8 @@ function Heroes(props) {
   const data = useLazyLoadQuery(
     graphql`
       query HeroesQuery {
-        root {
-          ...HeroesList_root
+        viewer {
+          ...HeroesList_viewer
         }
       }
     `    
@@ -32,7 +32,7 @@ function Heroes(props) {
     <Fragment>
       <h3>Heroes</h3>
       <hr className="gold" />
-      <HeroesList root={data.root} />
+      <HeroesList viewer={data.viewer} />
     </Fragment>
   )
 }
