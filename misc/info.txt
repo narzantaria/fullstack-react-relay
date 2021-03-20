@@ -1,7 +1,7 @@
 Server:
 
 yarn init -y
-yarn add config cors express express-graphql graphql graphql-relay npm-run-all uuid
+yarn add config cors express express-graphql graphql graphql-relay graphql-subscriptions graphql-tools npm-run-all subscriptions-transport-ws uuid
 yarn add -D nodemon
 
 Frontend:

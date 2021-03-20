@@ -3,9 +3,13 @@ const cors = require('cors');
 const config = require('config');
 
 const { graphqlHTTP } = require('express-graphql');
-const { GraphQLSchema } = require('graphql');
+const { GraphQLSchema, execute, subscribe } = require('graphql');
+const { createServer } = require('http');
+const { SubscriptionServer } = require('subscriptions-transport-ws');
+const { makeExecutableSchema } = require('graphql-tools');
 
 const PORT = config.get('PORT') || 5000;
+const WS_PORT = config.get('WS_PORT') || 8888;
 // const HOST = config.get('HOST');
 
 const Query = require('./graphql/query');
@@ -36,3 +40,21 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, _ => console.log(`Server started at ${PORT}...`));
 // app.listen(PORT,HOST, _ => console.log(`Server started at ${PORT}...`));
+
+const websocketServer = createServer(app);
+
+websocketServer.listen(WS_PORT, () => console.log(
+  `Websocket Server is now running on http://localhost:${WS_PORT}`
+));
+
+SubscriptionServer.create(
+  {
+    schema,
+    execute,
+    subscribe,
+  },
+  {
+    server: websocketServer,
+    path: '/graphql',
+  },
+);

@@ -4,11 +4,13 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header';
 import Heroes from './routes/Heroes';
 import Hero from './routes/Hero';
+import Pop from './components/Pop';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      <Pop />
       <Layout.Content id="Main">
         <Row>
           <Col span={22} offset={1}>

@@ -9,6 +9,7 @@ const Subscription = new GraphQLObjectType({
   fields: {
     HeroesNumber: {
       type: Population,
+      args: {},
       resolve: () => {
         return getHeroesNumber()
           .then(number => {

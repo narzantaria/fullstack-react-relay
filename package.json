@@ -16,7 +16,10 @@
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.0",
     "graphql-relay": "^0.6.0",
+    "graphql-subscriptions": "^1.2.1",
+    "graphql-tools": "^7.0.4",
     "npm-run-all": "^4.1.5",
+    "subscriptions-transport-ws": "^0.9.18",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
