@@ -15,7 +15,9 @@ function PopSubscription() {
     environment,
     {
       subscription,
-      updater: store => {},
+      updater: store => {
+        // console.log(store.getRootField("HeroesNumber").getValue("number"));
+      },
       onCompleted: () => {},
       onError: error => console.error(error),
     }

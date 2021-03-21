@@ -13,7 +13,6 @@ const Subscription = new GraphQLObjectType({
       args: {},
       subscribe: () => pubsub.asyncIterator(SOMETHING_UPDATED),
       resolve: () => {
-        // console.log(pubsub.asyncIterator(getHeroesNumber()));
         return getHeroesNumber()
           .then(result => {
             return {
