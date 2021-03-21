@@ -64,7 +64,7 @@ module.exports = {
     });
   },
   getHeroesNumber: () => {
-    return new Promise((resolve)=>{
+    return new Promise((resolve) => {
       resolve(heroes.length);
     });
   }

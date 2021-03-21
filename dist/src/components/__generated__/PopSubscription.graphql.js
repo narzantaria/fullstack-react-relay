@@ -11,7 +11,8 @@ import type { ConcreteRequest } from 'relay-runtime';
 export type PopSubscriptionVariables = {||};
 export type PopSubscriptionResponse = {|
   +HeroesNumber: ?{|
-    +number: ?number
+    +id: string,
+    +number: ?number,
   |}
 |};
 export type PopSubscription = {|
@@ -24,6 +25,7 @@ export type PopSubscription = {|
 /*
 subscription PopSubscription {
   HeroesNumber {
+    id
     number
   }
 }
@@ -39,6 +41,13 @@ var v0 = [
     "name": "HeroesNumber",
     "plural": false,
     "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "id",
+        "storageKey": null
+      },
       {
         "alias": null,
         "args": null,
@@ -68,16 +77,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "555e4900c9444a9c17096c7a7c490e55",
+    "cacheID": "6188c8c0487e829871d8020ec29ef478",
     "id": null,
     "metadata": {},
     "name": "PopSubscription",
     "operationKind": "subscription",
-    "text": "subscription PopSubscription {\n  HeroesNumber {\n    number\n  }\n}\n"
+    "text": "subscription PopSubscription {\n  HeroesNumber {\n    id\n    number\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'd77967f347dee7e0981f81789a988fcf';
+(node/*: any*/).hash = 'cbf1b488172671864b8ebcf323b6d3b6';
 
 module.exports = node;

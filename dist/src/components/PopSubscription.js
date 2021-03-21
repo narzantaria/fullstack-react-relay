@@ -1,10 +1,10 @@
 import { graphql, requestSubscription } from 'react-relay';
-// import { useSubscription } from 'react-relay/hooks';
 import environment from '../Environment';
 
 const subscription = graphql`
   subscription PopSubscription {
     HeroesNumber {
+      id
       number
     }
   }
@@ -15,9 +15,8 @@ function PopSubscription() {
     environment,
     {
       subscription,
-      onCompleted: () => {
-        // server closed the subscription
-      },
+      updater: store => {},
+      onCompleted: () => {},
       onError: error => console.error(error),
     }
   );

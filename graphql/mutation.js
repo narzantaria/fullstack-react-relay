@@ -10,6 +10,8 @@ const { Hero, HeroConnection } = require('./types/hero');
 
 const { addHero, updHero, removeHero } = require('../data/db');
 
+const { pubsub, SOMETHING_UPDATED } = require('./pubsub');
+
 const CreateHeroMutation = mutationWithClientMutationId({
   name: "CreateHero",
   inputFields: {
@@ -26,6 +28,7 @@ const CreateHeroMutation = mutationWithClientMutationId({
   mutateAndGetPayload: args => {
     return addHero(args)
       .then(result => {
+        pubsub.publish(SOMETHING_UPDATED);
         return result;
       });
   }
@@ -56,7 +59,7 @@ const RemoveHeroMutation = mutationWithClientMutationId({
   inputFields: {
     id: { type: new GraphQLNonNull(GraphQLString) },
   },
-  outputFields: {    
+  outputFields: {
     deletedId: { type: GraphQLString },
     deleted: { type: GraphQLBoolean },
   },
