@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { graphql } from 'react-relay';
 import { useFragment, usePaginationFragment } from 'react-relay/hooks';
 import AddHero from './AddHero';
+import Pop from './Pop';
 
 const paginationQuery = graphql`
   query HeroesListPaginationQuery(
@@ -69,6 +70,7 @@ function HeroesList({ viewer }) {
   );
   return (
     <Fragment>
+      <Pop />
       <AddHero />
       {data.Heroes.edges.map(edge => (
         <HeroTpl hero={edge.node} key={uuidv4()} />

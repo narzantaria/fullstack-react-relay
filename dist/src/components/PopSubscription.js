@@ -1,4 +1,4 @@
-import { graphql, requestSubscription } from 'react-relay';
+import { graphql, requestSubscription, Disposable } from 'react-relay';
 import environment from '../Environment';
 
 const subscription = graphql`
@@ -16,7 +16,8 @@ function PopSubscription() {
     {
       subscription,
       updater: store => {
-        // console.log(store.getRootField("HeroesNumber").getValue("number"));
+        let population = store.getRootField("HeroesNumber").getValue("number");
+        console.log(population);
       },
       onCompleted: () => {},
       onError: error => console.error(error),
